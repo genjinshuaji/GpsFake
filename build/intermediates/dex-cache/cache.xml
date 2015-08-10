@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="D:\workspace\Android\GpsDemo1\app\libs\BaiduLBS_Android.jar"
+        jumboMode="false"
+        revision="23.0.0 rc3"
+        sha1="8bad7cc10606ac997fd3764710507cc3d8d9957b">
+        <dex dex="D:\workspace\Android\GpsDemo1\app\build\intermediates\pre-dexed\debug\BaiduLBS_Android-8e87532a4bc04b1625c414b2b26127b9d2d15756.jar" />
+    </item>
+    <item
+        jar="C:\Users\zhaungjun\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-v4\18.0.0\support-v4-18.0.0.jar"
+        jumboMode="false"
+        revision="23.0.0 rc3"
+        sha1="44ec51e9d395a47aab135e5e1b556c0007442156">
+        <dex dex="D:\workspace\Android\GpsDemo1\app\build\intermediates\pre-dexed\debug\support-v4-18.0.0-d2bea961e98d43f24d50eb2b48270320adcc952f.jar" />
+    </item>
+
+</items>
