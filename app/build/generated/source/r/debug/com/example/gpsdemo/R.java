@@ -19,14 +19,16 @@ public final class R {
         public static final int icon_gcoding=0x7f020001;
     }
     public static final class id {
-        public static final int LoopNum=0x7f070001;
-        public static final int bmapView=0x7f070007;
-        public static final int bt_Ok=0x7f070003;
+        public static final int LoopNum=0x7f070004;
+        public static final int RecordNum=0x7f070001;
+        public static final int Refresh=0x7f070005;
+        public static final int bmapView=0x7f070009;
+        public static final int bt_Ok=0x7f070007;
         public static final int editText=0x7f070000;
-        public static final int fake=0x7f070002;
-        public static final int recording=0x7f070004;
-        public static final int stop=0x7f070005;
-        public static final int tv_location=0x7f070006;
+        public static final int fake=0x7f070006;
+        public static final int recording=0x7f070002;
+        public static final int stop=0x7f070003;
+        public static final int tv_location=0x7f070008;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;

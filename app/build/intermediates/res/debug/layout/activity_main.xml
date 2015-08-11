@@ -12,6 +12,30 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numeric="integer"
+            android:ems="10"
+            android:id="@+id/RecordNum"
+            android:layout_weight="1"
+            android:hint="记录频率" />
+        <Button
+            android:id="@+id/recording"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="记录" />
+        <Button
+            android:id="@+id/stop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="停止" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <EditText
             android:layout_width="wrap_content"
@@ -21,6 +45,15 @@
             android:id="@+id/LoopNum"
             android:layout_weight="1"
             android:hint="输入循环次数" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numeric="integer"
+            android:ems="10"
+            android:id="@+id/Refresh"
+            android:layout_weight="1"
+            android:hint="输入刷新次数" />
 
 
         <Button
@@ -33,16 +66,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="确定" />
-        <Button
-            android:id="@+id/recording"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="记录" />
-        <Button
-            android:id="@+id/stop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="停止" />
+
     </LinearLayout>
 
 

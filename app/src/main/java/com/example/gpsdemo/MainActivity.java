@@ -72,6 +72,8 @@ public class MainActivity extends Activity implements LocationListener, OnClickL
     private Button bt_Stop;
     private EditText et_LoopNum;
     private EditText editText;
+    private EditText recordText;
+    private EditText refreshText;
     private LocationManager lm;
     private LocationManager mylm;
     private double latitude = 31.3029742, longitude = 120.6097126;// 默认常州
@@ -118,7 +120,9 @@ public class MainActivity extends Activity implements LocationListener, OnClickL
         bt_Recording = (Button) findViewById(R.id.recording);
         bt_Stop = (Button) findViewById(R.id.stop);
         et_LoopNum = (EditText) findViewById(R.id.LoopNum);
+        recordText = (EditText) findViewById(R.id.RecordNum);
         tv_location = (TextView) findViewById(R.id.tv_location);
+        refreshText = (EditText) findViewById(R.id.Refresh);
         // 地图初始化
         mMapView = (MapView) findViewById(R.id.bmapView);
         mBaiduMap = mMapView.getMap();
@@ -214,19 +218,7 @@ public class MainActivity extends Activity implements LocationListener, OnClickL
      * 
      */
     private void inilocation() {
-
-
-        // 获取位置管理服务
-        mylm = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-        mylm.addTestProvider(mMockProviderName, false, true, false, false, true, true,
-                true, 0, 5);
-        mylm.setTestProviderEnabled(mMockProviderName, true);
-        // 设置监听器，自动更新的最小时间为间隔N秒(1秒为1*1000，这样写主要为了方便)或最小位移变化超过N米
-        mylm.requestLocationUpdates(mMockProviderName, 0, 0, this);
-
-
         lm=(LocationManager)getSystemService(Context.LOCATION_SERVICE);
-
         //判断GPS是否正常启动
         if(!lm.isProviderEnabled(LocationManager.GPS_PROVIDER)){
             Toast.makeText(this, "请开启GPS导航...", Toast.LENGTH_SHORT).show();
@@ -639,7 +631,17 @@ public class MainActivity extends Activity implements LocationListener, OnClickL
 
     public void FakeLocation()
     {
+        // 获取位置管理服务
+        mylm = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        mylm.addTestProvider(mMockProviderName, false, true, false, false, true, true,
+                true, 0, 5);
+        mylm.setTestProviderEnabled(mMockProviderName, true);
+        // 设置监听器，自动更新的最小时间为间隔N秒(1秒为1*1000，这样写主要为了方便)或最小位移变化超过N米
+        mylm.requestLocationUpdates(mMockProviderName, 0, 0, this);
+
         final int LoopNum = Integer.parseInt(et_LoopNum.getText().toString());
+        final int refreshnum = Integer.parseInt(refreshText.getText().toString());
+        final long sleeptime = 1000/refreshnum;
         RUN=true;
         // 开启线程，一直修改GPS坐标
         thread = new Thread(new Runnable() {
@@ -652,7 +654,8 @@ public class MainActivity extends Activity implements LocationListener, OnClickL
                 int i =0;
                 while (RUN) {
                     try {
-                        Thread.sleep(100);//78
+
+                        Thread.sleep(sleeptime);//78
                         i++;
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -676,6 +679,8 @@ public class MainActivity extends Activity implements LocationListener, OnClickL
 
     public void RecordLocation()
     {
+        final int recordNum = Integer.parseInt(recordText.getText().toString());
+        final long sleeptime = 1000/recordNum;
         RUN=true;
         try {
             FileUnitFromSDCard.NewDir("/mnt/sdcard/GPX/");
@@ -691,7 +696,7 @@ public class MainActivity extends Activity implements LocationListener, OnClickL
                 int i =0;
                 while (RUN) {
                     try {
-                        Thread.sleep(100);
+                        Thread.sleep(sleeptime);
                         getCriteria();
                         String bestProvider = lm.getBestProvider(getCriteria(), true);
                         Location location = lm.getLastKnownLocation(bestProvider); // 通过GPS获取位置
